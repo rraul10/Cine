@@ -1,6 +1,6 @@
 package butacas.validator
 
-import butacas.errors.ButacaErrors
+import butacas.errors.ButacaError
 import butacas.models.Butaca
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
@@ -11,10 +11,10 @@ private val logger = logging()
 
 class ButacaValidator {
 
-    fun validate(butaca: Butaca): Result<Butaca, ButacaErrors> {
+    fun validate(butaca: Butaca): Result<Butaca, ButacaError> {
         logger.debug{"Validando butaca"}
         return if (!esValidaButaca(butaca.id)) {
-            Err(ButacaErrors.ButacaNotValid("La butaca no es valida"))
+            Err(ButacaError.ButacaNotValid("La butaca no es valida"))
         } else {
             Ok(butaca)
         }
