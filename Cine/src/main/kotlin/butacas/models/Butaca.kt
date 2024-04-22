@@ -1,10 +1,13 @@
 package butacas.models
 
+const val PROB_VIP = 30
+const val PROB_NORMAL = 70
+
 class Butaca(
-    val id : String,
-    val estado: Estado,
-    val actividad: Actividad,
-    val tipo : Tipo
+    val id : String = "",
+    val estado: Estado = Estado.LIBRE,
+    val actividad: Actividad = Actividad.ACTIVA,
+    val tipo : Tipo = Tipo.NORMAL
 ) {
     val precio: Double
 
@@ -12,6 +15,17 @@ class Butaca(
         when(this.tipo){
             Tipo.NORMAL -> precio = 5.0
             Tipo.VIP -> precio = 8.0
+        }
+    }
+
+    companion object{
+        fun random(): Butaca {
+            val random = (0..100).random()
+            return when {
+                random <= PROB_VIP -> Butaca(tipo = Tipo.VIP)
+                random <= PROB_NORMAL -> Butaca(tipo = Tipo.NORMAL)
+                else -> Butaca()
+            }
         }
     }
 
