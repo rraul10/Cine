@@ -17,18 +17,18 @@ class Butaca(
 }
 
 enum class Actividad(val actividad: String){
-    ACTIVA("Butaca activa")
-    MANTENIMIENTO("Butaca en mantenimiento")
+    ACTIVA("Butaca activa"),
+    MANTENIMIENTO("Butaca en mantenimiento"),
     FUERADESERVICIO("Butaca fuera de servicio")
 }
 
 enum class Estado(val estado: String){
-    LIBRE("Libre")
-    RESERVADA("Reservada")
+    LIBRE("Libre"),
+    RESERVADA("Reservada"),
     OCUPADA("Ocupada")
 }
 
 enum class Tipo(val tipo: String){
-    NORMAL("Butaca normal")
+    NORMAL("Butaca normal"),
     VIP("Butaca VIP")
 }
