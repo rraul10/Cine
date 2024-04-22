@@ -5,7 +5,7 @@ import butacas.models.Tipo
 import butacas.validator.ButacaValidator
 
 fun main(){
-
+    println()
     val butaca = Butaca("H4",Estado.LIBRE, Actividad.ACTIVA, Tipo.NORMAL)
 
     val butacaValidator = ButacaValidator()
