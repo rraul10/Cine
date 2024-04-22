@@ -1,4 +1,11 @@
 package butacas.dto
 
-class ButacaDto {
+import butacas.models.Estado
+
+class ButacaDto(
+    val id: String,
+    val estado: String,
+    val actividad: String,
+    val tipo: String
+) {
 }
