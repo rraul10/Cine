@@ -1,9 +1,15 @@
+import butacas.models.Actividad
+import butacas.models.Butaca
+import butacas.models.Estado
+import butacas.models.Tipo
 import butacas.validator.ButacaValidator
 
 fun main(){
 
-    val butaca = ButacaValidator()
+    val butaca = Butaca("H4",Estado.LIBRE, Actividad.ACTIVA, Tipo.NORMAL)
 
-    println( butaca.esValidaButaca("F9"))
+    val butacaValidator = ButacaValidator()
+
+    println( butacaValidator.validate(butaca))
 
 }
