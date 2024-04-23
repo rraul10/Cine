@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 data class LineaVentasDto(
     val id: String,
     val butacas: ButacaDto,
-    val cantidad: Int,
-    val precio: Double,
+    val cantidad: String,
+    val precio: String,
     val createAt: String,
     val updateAt: String
 )
