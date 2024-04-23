@@ -5,7 +5,7 @@ import java.util.*
 
 data class Venta(
     val id: UUID = UUID.randomUUID(),
-    val lineas: List<LineaVentas>,
+    val lineas: List<LineaVenta>,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     val updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
