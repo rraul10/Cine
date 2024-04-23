@@ -1,13 +1,12 @@
 package socio.repositories
 
+import org.lighthousegames.logging.logging
 import socio.models.Socio
 import java.time.LocalDateTime
 
 private val logger = logging()
 
-vale este es el problema de esto, estoy haciendo el repository este de socio impl y hay q hacer el sqldelight manager para que no salga rojo sae
-en plan creabas el directory y luego haciamos un file
-class ClientesRepositoryImpl(
+class SocioRepositoryImpl(
     private val dbManager: SqlDeLightManager
 ) : ClientesRepository {
     private val db = dbManager.databaseQueries
@@ -22,15 +21,15 @@ class ClientesRepositoryImpl(
         return db.selectClienteById(id).executeAsOneOrNull()?.toCliente()
     }
 
-    override fun save(cliente: Socio): Socio {
+    override fun save(socio: Socio): Socio {
         logger.debug { "Guardando socio: $socio" }
 
         val timeStamp = LocalDateTime.now().toString()
 
         db.transaction {
-            db.insertCliente(
-                nombre = cliente.nombre,
-                email = cliente.gmail,
+            db.insertSocio(
+                nombre = socio.nombre,
+                email = socio.gmail,
                 created_at = timeStamp,
                 updated_at = timeStamp,
             )
