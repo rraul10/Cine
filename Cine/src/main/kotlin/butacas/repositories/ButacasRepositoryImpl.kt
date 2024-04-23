@@ -1,8 +1,15 @@
 package butacas.repositories
 
 import butacas.models.Butaca
+import org.example.database.SqlDelightManager
+import org.lighthousegames.logging.logging
+
+private val logger = logging()
 
 class ButacasRepositoryImpl: ButacasRepository {
+
+    private val db = SqlDelightManager().databaseQueries
+
     override fun findAll(): List<Butaca> {
         TODO("Not yet implemented")
     }

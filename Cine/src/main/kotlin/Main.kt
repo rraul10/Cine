@@ -3,7 +3,7 @@ import butacas.models.Butaca
 import butacas.models.Estado
 import butacas.models.Tipo
 import butacas.validator.ButacaValidator
-import cine.models.Sala
+import java.io.ObjectInputFilter.Config
 
 fun main(){
     println()
@@ -34,7 +34,5 @@ fun main(){
 
     } while (opcion != 0)
 
-    val sala = Sala()
-    println(sala.butacas)
 }
 
