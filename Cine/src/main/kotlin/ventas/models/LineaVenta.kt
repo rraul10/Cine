@@ -4,7 +4,7 @@ import butacas.models.Butaca
 import java.time.LocalDateTime
 import java.util.*
 
-data class LineaVentas(
+data class LineaVenta(
     val id: UUID = UUID.randomUUID(),
     val butaca: Butaca,
     val cantidad: Int,
