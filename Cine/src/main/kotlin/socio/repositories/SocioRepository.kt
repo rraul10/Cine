@@ -2,7 +2,7 @@ package socio.repositories
 
 import socio.models.Socio
 
-interface ClientesRepository {
+interface SocioRepository {
     fun findAll(): List<Socio>
     fun findById(id: Long): Socio?
     fun save(cliente: Socio): Socio
