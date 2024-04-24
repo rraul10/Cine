@@ -5,8 +5,6 @@ import java.time.LocalDateTime
 
 private val logger = logging()
 
-vale este es el problema de esto, estoy haciendo el repository este de socio impl y hay q hacer el sqldelight manager para que no salga rojo sae
-en plan creabas el directory y luego haciamos un file
 class ClientesRepositoryImpl(
     private val dbManager: SqlDeLightManager
 ) : ClientesRepository {
