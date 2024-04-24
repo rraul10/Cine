@@ -1,7 +1,7 @@
 package socio.dto
 
-data class ClienteDto(
-    val id: String,
+data class SocioDto(
+    val id: Long,
     val nombre: String,
     val gmail: String,
     val createdAt: String,
