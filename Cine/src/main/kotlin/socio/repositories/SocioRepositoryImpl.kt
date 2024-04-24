@@ -21,15 +21,15 @@ class SocioRepositoryImpl(
         return db.selectClienteById(id).executeAsOneOrNull()?.toCliente()
     }
 
-    override fun save(cliente: Socio): Socio {
+    override fun save(socio: Socio): Socio {
         logger.debug { "Guardando socio: $socio" }
 
         val timeStamp = LocalDateTime.now().toString()
 
         db.transaction {
             db.insertCliente(
-                nombre = cliente.nombre,
-                email = cliente.gmail,
+                nombre = socio.nombre,
+                email = socio.gmail,
                 created_at = timeStamp,
                 updated_at = timeStamp,
             )
