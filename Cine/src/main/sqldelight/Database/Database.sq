@@ -1,0 +1,28 @@
+--Creacion de la tabla ButacaEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+CREATE TABLE ButacaEntity(
+    id TEXT PRIMARY KEY NOT NULL,
+    estado TEXT NOT NULL,
+    actividad TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    precio INTEGER NOT NULL
+);
+
+--Operaciones CRUD de ButacaEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+selectAllButacaEntity:
+SELECT * FROM ButacaEntity;
+
+selectButacaEntityById:
+SELECT * FROM ButacaEntity WHERE id = ?;
+
+insertButacaEntity:
+INSERT INTO ButacaEntity(id,estado,actividad,tipo,precio) VALUES (?,?,?,?,?);
+
+updateButacaEntity:
+UPDATE ButacaEntity SET id=?, estado=?, actividad=?, tipo= ?, precio= ?;
+
+deleteButacaEntityById:
+DELETE FROM ButacaEntity WHERE id= ?;
+
+deleteAllButacaEntity:
+DELETE FROM ButacaEntity;
