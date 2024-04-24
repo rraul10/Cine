@@ -13,33 +13,33 @@ class SocioRepositoryImpl(
 
     override fun findAll(): List<Socio> {
         logger.debug { "Buscando todos los socios" }
-        return db.selectAllClientes().executeAsList().map { it.toCliente() }
+        return db.selectAllSocio().executeAsList().map { it.toSocio() }
     }
 
     override fun findById(id: Long): Socio? {
-        logger.debug { "Buscando cliente por id: $id" }
-        return db.selectClienteById(id).executeAsOneOrNull()?.toCliente()
+        logger.debug { "Buscando socio por id: $id" }
+        return db.selectSocioById(id).executeAsOneOrNull()?.toSocio()
     }
 
-    override fun save(cliente: Socio): Socio {
+    override fun save(socio: Socio): Socio {
         logger.debug { "Guardando socio: $socio" }
 
         val timeStamp = LocalDateTime.now().toString()
 
         db.transaction {
-            db.insertCliente(
-                nombre = cliente.nombre,
-                email = cliente.gmail,
+            db.insertSocio(
+                nombre = socio.nombre,
+                gmail = socio.gmail,
                 created_at = timeStamp,
                 updated_at = timeStamp,
             )
         }
 
-        return db.selectClienteLastInserted().executeAsOne().toCliente()
+        return db.selectSocioLastInserted().executeAsOne().toSocio()
     }
 
     override fun update(id: Long, socio: Socio): Socio? {
-        logger.debug { "Actualizando cliente por id: $id" }
+        logger.debug { "Actualizando socio por id: $id" }
         var result = this.findById(id) ?: return null
         val timeStamp = LocalDateTime.now()
         result = result.copy(
@@ -49,7 +49,7 @@ class SocioRepositoryImpl(
             updatedAt = timeStamp
         )
 
-        db.updateCliente(
+        db.updateSocio(
             nombre = result.nombre,
             gmail = result.gmail,
             updated_at = timeStamp.toString(),
@@ -60,11 +60,11 @@ class SocioRepositoryImpl(
     }
 
     override fun delete(id: Long): Socio? {
-        logger.debug { "Borrando cliente por id: $id" }
+        logger.debug { "Borrando socio por id: $id" }
         val result = this.findById(id) ?: return null
         // Esto es borrado lógico
         val timeStamp = LocalDateTime.now()
-        db.updateCliente(
+        db.updateSocio(
             nombre = result.nombre,
             gmail = result.gmail,
             is_deleted = 1,
