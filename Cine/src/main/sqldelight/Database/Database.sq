@@ -26,3 +26,33 @@ DELETE FROM ButacaEntity WHERE id= ?;
 
 deleteAllButacaEntity:
 DELETE FROM ButacaEntity;
+
+--Creacion de la tabla SocioEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+CREATE TABLE SocioEntity(
+    id TEXT PRIMARY KEY NOT NULL,
+    nombre TEXT NOT NULL,
+    gmail TEXT NOT NULL,
+    createAt TEXT NOT NULL,
+    updateAt TEXT NOT NULL
+);
+
+--Operaciones CRUD de SocioEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+selectAllSocioEntity:
+SELECT * FROM SocioEntity;
+
+selectSocioEntityById:
+SELECT * FROM SocioEntity WHERE id = ?;
+
+insertSocioEntity:
+INSERT INTO SocioEntity(id,nombre,gmail,createAt,updateAt) VALUES (?,?,?,?,?);
+
+updateSocioEntity:
+UPDATE SocioEntity SET id=?, nombre=?, gmail=?, createAt= ?, updateAt= ?;
+
+deleteSocioEntityById:
+DELETE FROM SocioEntity WHERE id= ?;
+
+deleteAllSocioEntity:
+DELETE FROM SocioEntity;
+

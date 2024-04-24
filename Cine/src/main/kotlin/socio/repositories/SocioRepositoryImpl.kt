@@ -1,13 +1,14 @@
 package socio.repositories
 
+import org.lighthousegames.logging.logging
 import socio.models.Socio
 import java.time.LocalDateTime
 
 private val logger = logging()
 
-class ClientesRepositoryImpl(
+class SocioRepositoryImpl(
     private val dbManager: SqlDeLightManager
-) : ClientesRepository {
+) : SocioRepository {
     private val db = dbManager.databaseQueries
 
     override fun findAll(): List<Socio> {

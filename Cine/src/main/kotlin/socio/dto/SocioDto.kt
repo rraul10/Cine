@@ -1,5 +1,8 @@
 package socio.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class SocioDto(
     val id: Long,
     val nombre: String,

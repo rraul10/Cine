@@ -3,7 +3,7 @@ package socio.models
 import java.time.LocalDateTime
 
 data class Socio(
-    val id: Long = -1,
+    val id: Long,
     val nombre: String,
     val gmail: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
