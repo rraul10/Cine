@@ -12,6 +12,4 @@ interface ButacasService {
     fun create(butaca: Butaca):Butaca
     fun update(id: String, butaca: Butaca):Butaca
     fun delete(id: String): Butaca
-    fun import(csvFile: File)
-    fun export(butacas: List<Butaca>): File
 }

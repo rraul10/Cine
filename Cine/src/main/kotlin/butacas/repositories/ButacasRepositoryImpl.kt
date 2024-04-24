@@ -4,7 +4,6 @@ import butacas.models.Butaca
 import org.example.database.SqlDelightManager
 import org.lighthousegames.logging.logging
 import toButaca
-import kotlin.concurrent.thread
 
 private val logger = logging()
 
