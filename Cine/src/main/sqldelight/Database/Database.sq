@@ -1,4 +1,4 @@
---Creacion de la tabla butacaEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+--Creacion de la tabla ButacaEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
 CREATE TABLE ButacaEntity(
     id TEXT PRIMARY KEY NOT NULL,
     estado TEXT NOT NULL,

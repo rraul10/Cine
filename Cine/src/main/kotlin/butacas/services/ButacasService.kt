@@ -7,10 +7,11 @@ import com.github.michaelbull.result.Result
 import java.io.File
 
 interface ButacasService {
-    fun getAll(): Result<List<Butaca>, ButacaException>
-    fun getById(id: String): Result<Butaca, ButacaException>
-    fun create(butaca: Butaca): Result<Butaca, ButacaException>
-    fun update(id: String, butaca: Butaca): Result<Butaca, ButacaException>
-    fun delete(id: String): Result<Butaca, ButacaException>
-    fun import(csvFile: File): Result<Unit, ButacaException>
+    fun getAll(): List<Butaca>
+    fun getById(id: String):Butaca
+    fun create(butaca: Butaca):Butaca
+    fun update(id: String, butaca: Butaca):Butaca
+    fun delete(id: String): Butaca
+    fun import(csvFile: File)
+    fun export(butacas: List<Butaca>): File
 }
