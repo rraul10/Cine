@@ -5,6 +5,6 @@ import java.io.File
 
 interface ButacasStorage {
 
-    fun import(lista: List<Butaca>)
-    fun export(file: File): List<Butaca>
+    fun save(fecha: String, lista: List<Butaca>)
+    fun load(file: File): List<Butaca>
 }

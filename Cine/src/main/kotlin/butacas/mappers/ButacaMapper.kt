@@ -1,4 +1,5 @@
 import Database.ButacaEntity
+import butacas.dto.ButacaDto
 import butacas.exceptions.ButacaException
 import butacas.models.Actividad
 import butacas.models.Butaca
@@ -28,3 +29,13 @@ fun ButacaEntity.toButaca(): Butaca {
 
     return Butaca(id, estado, actividad, tipo)
 }
+
+fun Butaca.toButacaDto(): ButacaDto {
+    return ButacaDto(
+        id = this.id,
+        estado = this.estado.toString(),
+        actividad = this.actividad.toString(),
+        tipo = this.tipo.toString(),
+    )
+}
+
