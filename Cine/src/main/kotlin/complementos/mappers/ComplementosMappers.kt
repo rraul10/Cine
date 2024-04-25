@@ -25,7 +25,7 @@ fun ComplemetoEntity.toComplemento(): Complemento {
         }
 
     }
-    throw ComplemntoException.TipoNoValido("Tipo no valido")
+    throw ComplementoException.TipoNoValido("Tipo no valido")
 }
 
 fun ComplementoDto.toComplemento(): Complemento {
