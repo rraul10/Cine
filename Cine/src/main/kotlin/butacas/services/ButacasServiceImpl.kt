@@ -3,6 +3,7 @@ package butacas.services
 import butacas.exceptions.ButacaException
 import butacas.models.Butaca
 import butacas.repositories.ButacasRepository
+import butacas.storage.ButacasStorage
 import com.github.michaelbull.result.Result
 import org.lighthousegames.logging.logging
 import java.io.File
@@ -12,7 +13,7 @@ private val logger = logging()
 
 class ButacasServiceImpl(
     private val butacasRepository: ButacasRepository
-): ButacasService {
+): ButacasService{
     override fun getAll(): List<Butaca> {
         logger.debug { "Obteniendo las butacas" }
         return butacasRepository.findAll()
@@ -29,19 +30,13 @@ class ButacasServiceImpl(
     }
 
     override fun update(id: String, butaca: Butaca): Butaca {
-        TODO("Not yet implemented")
+        logger.debug { "Actualizando la butaca: $butaca" }
+        return butacasRepository.update(id,butaca)?: throw ButacaException.ButacaNoValida("Butaca no actualizada")
     }
 
     override fun delete(id: String): Butaca {
-        TODO("Not yet implemented")
-    }
-
-    override fun import(csvFile: File) {
-        TODO("Not yet implemented")
-    }
-
-    override fun export(butacas: List<Butaca>): File {
-        TODO("Not yet implemented")
+        logger.debug { "Eliminando la butaca con id: $id" }
+        return butacasRepository.delete(id)?: throw ButacaException.ButacaNoValida("Butaca no eliminada")
     }
 
 }
