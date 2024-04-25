@@ -7,11 +7,12 @@ import java.time.LocalDateTime
 
 fun SocioEntity.toSocio(): Socio {
     return Socio(
-        id = this.id.toLong(),
+        id = this.id,
         nombre = this.nombre,
         gmail = this.gmail,
-        createdAt = LocalDateTime.parse(this.createAt),
-        updatedAt = LocalDateTime.parse(this.updateAt)
+        createdAt = LocalDateTime.parse(this.created_at),
+        updatedAt = LocalDateTime.parse(this.updated_at),
+        isDeleted = this.is_deleted.toInt() == 1
     )
 }
 

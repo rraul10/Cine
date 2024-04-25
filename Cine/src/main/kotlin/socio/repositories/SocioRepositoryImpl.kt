@@ -6,9 +6,9 @@ import java.time.LocalDateTime
 
 private val logger = logging()
 
-class SocioRepositoryImpl(
+class ClientesRepositoryImpl(
     private val dbManager: SqlDeLightManager
-) : SocioRepository {
+) : ClientesRepository {
     private val db = dbManager.databaseQueries
 
     override fun findAll(): List<Socio> {
@@ -21,15 +21,15 @@ class SocioRepositoryImpl(
         return db.selectClienteById(id).executeAsOneOrNull()?.toCliente()
     }
 
-    override fun save(socio: Socio): Socio {
+    override fun save(cliente: Socio): Socio {
         logger.debug { "Guardando socio: $socio" }
 
         val timeStamp = LocalDateTime.now().toString()
 
         db.transaction {
             db.insertCliente(
-                nombre = socio.nombre,
-                email = socio.gmail,
+                nombre = cliente.nombre,
+                email = cliente.gmail,
                 created_at = timeStamp,
                 updated_at = timeStamp,
             )

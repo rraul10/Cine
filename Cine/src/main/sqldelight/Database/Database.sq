@@ -27,32 +27,32 @@ DELETE FROM ButacaEntity WHERE id= ?;
 deleteAllButacaEntity:
 DELETE FROM ButacaEntity;
 
---Creacion de la tabla SocioEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
-CREATE TABLE SocioEntity(
-    id TEXT PRIMARY KEY NOT NULL,
+
+--ComplementoEntity
+CREATE TABLE IF NOT EXISTS ComplemetoEntity(
+    tipo TEXT NOT NULL ,
+    id INTEGER PRIMARY KEY NOT NULL,
     nombre TEXT NOT NULL,
-    gmail TEXT NOT NULL,
-    createAt TEXT NOT NULL,
-    updateAt TEXT NOT NULL
+    precio INTEGER NOT NULL
 );
+-- Crud ComplemetoEntity
+getAllComplemetoEntity:
+SELECT * FROM ComplemetoEntity;
 
---Operaciones CRUD de SocioEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+getByIdComplemetoEntity:
+SELECT * FROM ComplemetoEntity WHERE id = ?;
 
-selectAllSocioEntity:
-SELECT * FROM SocioEntity;
+getComplementoByTipo:
+SELECT * FROM ComplemetoEntity WHERE tipo=?;
 
-selectSocioEntityById:
-SELECT * FROM SocioEntity WHERE id = ?;
+updateComplementoEntity:
+UPDATE ComplemetoEntity SET id=?, nombre=?, precio=?, tipo=?;
 
-insertSocioEntity:
-INSERT INTO SocioEntity(id,nombre,gmail,createAt,updateAt) VALUES (?,?,?,?,?);
+deleteAllComplemetoEntity:
+DELETE FROM ComplemetoEntity;
 
-updateSocioEntity:
-UPDATE SocioEntity SET id=?, nombre=?, gmail=?, createAt= ?, updateAt= ?;
+insertComplemento:
+INSERT INTO ComplemetoEntity(tipo,nombre,precio) VALUES(?,?,?);
 
-deleteSocioEntityById:
-DELETE FROM SocioEntity WHERE id= ?;
-
-deleteAllSocioEntity:
-DELETE FROM SocioEntity;
-
+deleteComplementoByID:
+DELETE FROM ComplemetoEntity WHERE id=?;
