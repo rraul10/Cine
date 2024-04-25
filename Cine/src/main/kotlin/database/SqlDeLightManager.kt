@@ -7,11 +7,7 @@ import config.Config
 import org.lighthousegames.logging.logging
 
 private val logger = logging()
-class SqlDelightManager(
-    private val databaseInMemory: Boolean = true,
-    private val databaseUrl: String = "jdbc:sqlite:productos.db",
-    private val databaseInitData: Boolean = true
-) {
+class SqlDelightManager{
     val databaseQueries: DatabaseQueries by lazy { initQueries() }
 
     init {
@@ -21,12 +17,12 @@ class SqlDelightManager(
 
     private fun initQueries(): DatabaseQueries {
 
-        return if (databaseInMemory) {
+        return if (Config.databaseInMemory) {
             logger.debug { "SqlDeLightClient - InMemory" }
             JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
         } else {
-            logger.debug { "SqlDeLightClient - File: ${databaseUrl}" }
-            JdbcSqliteDriver(databaseUrl)
+            logger.debug { "SqlDeLightClient - File: ${Config.databaseUrl}" }
+            JdbcSqliteDriver(Config.databaseUrl)
         }.let { driver ->
             logger.debug { "Creando Tablas (si es necesario)" }
             AppDatabase.Schema.create(driver)
@@ -35,7 +31,7 @@ class SqlDelightManager(
     }
 
     fun initialize() {
-        if (databaseInitData) {
+        if (Config.databaseInitData) {
             removeAllData()
         }
     }

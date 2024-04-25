@@ -2,30 +2,46 @@ package config
 
 import org.lighthousegames.logging.logging
 import java.nio.file.Files
+import java.util.*
 import kotlin.io.path.Path
 
 private val logger = logging()
 
-class Config(
-    _databaseUrl: String = "jdbc:sqlite:cine.db",
-    _databaseInitTables: String = "true",
-    _databaseInitData: String = "true",
-    _databaseInMemory: String = "true",
-    _storageData: String = "data",
-) {
-    val databaseUrl: String = _databaseUrl
-    val databaseInitTables: Boolean = _databaseInitTables.toBoolean()
-    val databaseInitData: Boolean = _databaseInitData.toBoolean()
-    val databaseInMemory: Boolean = _databaseInMemory.toBoolean()
-    val storageData: String = _storageData
+object Config {
+    var databaseUrl: String = "jdbc:sqlite:cine.db"
+        private set
+    var databaseInitTables: Boolean = false
+        private set
+    var databaseInitData: Boolean = false
+        private set
+    var databaseInMemory: Boolean = false
+        private set
+    var storageData: String = "data"
+        private set
 
     init {
         try {
             logger.debug { "Cargando configuración" }
+            val properties = Properties()
+
+            properties.load(ClassLoader.getSystemResourceAsStream("config.properties"))
+
+            databaseUrl = properties.getProperty("database.url", this.databaseUrl)
+            databaseInitTables =
+                properties.getProperty("database.init.tables", this.databaseInitTables.toString()).toBoolean()
+            databaseInitData =
+                properties.getProperty("database.init.data", this.databaseInitData.toString()).toBoolean()
+            databaseInMemory =
+                properties.getProperty("database.inmemory", this.databaseInMemory.toString()).toBoolean()
+            storageData = properties.getProperty("storage.data", this.storageData)
+            logger.debug { "Configuración cargada correctamente" }
+
+            // crear el directorio si no existe
             Files.createDirectories(Path(storageData))
 
         } catch (e: Exception) {
             logger.error { "Error cargando configuración: ${e.message}" }
+            logger.error { "Usando valores por defecto" }
         }
 
     }
