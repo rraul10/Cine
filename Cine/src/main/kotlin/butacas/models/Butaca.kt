@@ -3,7 +3,7 @@ package butacas.models
 const val PROB_VIP = 30
 const val PROB_NORMAL = 70
 
-class Butaca(
+data class Butaca(
     val id : String = "",
     val estado: Estado = Estado.LIBRE,
     val actividad: Actividad = Actividad.ACTIVA,

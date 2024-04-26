@@ -1,0 +1,58 @@
+--Creacion de la tabla ButacaEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+CREATE TABLE ButacaEntity(
+    id TEXT PRIMARY KEY NOT NULL,
+    estado TEXT NOT NULL,
+    actividad TEXT NOT NULL,
+    tipo TEXT NOT NULL,
+    precio INTEGER NOT NULL
+);
+
+--Operaciones CRUD de ButacaEntity -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-
+
+selectAllButacaEntity:
+SELECT * FROM ButacaEntity;
+
+selectButacaEntityById:
+SELECT * FROM ButacaEntity WHERE id = ?;
+
+insertButacaEntity:
+INSERT INTO ButacaEntity(id,estado,actividad,tipo,precio) VALUES (?,?,?,?,?);
+
+updateButacaEntity:
+UPDATE ButacaEntity SET id=?, estado=?, actividad=?, tipo= ?, precio= ?;
+
+deleteButacaEntityById:
+DELETE FROM ButacaEntity WHERE id= ?;
+
+deleteAllButacaEntity:
+DELETE FROM ButacaEntity;
+
+
+--ComplementoEntity
+CREATE TABLE IF NOT EXISTS ComplementoEntity(
+    tipo TEXT NOT NULL ,
+    id INTEGER PRIMARY KEY NOT NULL,
+    nombre TEXT NOT NULL,
+    precio INTEGER NOT NULL
+);
+-- Crud ComplemetoEntity
+getAllComplementoEntity:
+SELECT * FROM ComplementoEntity;
+
+getByIdComplementoEntity:
+SELECT * FROM ComplementoEntity WHERE id = ?;
+
+getComplementoByTipo:
+SELECT * FROM ComplementoEntity WHERE tipo=?;
+
+updateComplementoEntity:
+UPDATE ComplementoEntity SET id=?, nombre=?, precio=?, tipo=?;
+
+deleteAllComplementoEntity:
+DELETE FROM ComplementoEntity;
+
+insertComplemento:
+INSERT INTO ComplementoEntity(tipo,nombre,precio) VALUES(?,?,?);
+
+deleteComplementoByID:
+DELETE FROM ComplementoEntity WHERE id=?;
