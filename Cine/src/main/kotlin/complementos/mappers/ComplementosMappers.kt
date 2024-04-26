@@ -1,11 +1,11 @@
 package complementos.mappers
 
-import Database.ComplemetoEntity
+import Database.ComplementoEntity
 import complementos.dto.ComplementoDto
 import complementos.exceptions.ComplementoException
 import complementos.models.*
 
-fun ComplemetoEntity.toComplemento(): Complemento {
+fun ComplementoEntity.toComplemento(): Complemento {
     val _nombre: String = this.nombre
     val _tipo: String = this.tipo
     when (_tipo) {

@@ -14,12 +14,12 @@ class ComplementoRepositoryImpl: ComplementoRepository {
 
     override fun findAll(): List<Complemento> {
         logger.debug { "Obteniendo todas los complementos" }
-        return db.getAllComplemetoEntity().executeAsList().map { it.toComplemento() }
+        return db.getAllComplementoEntity().executeAsList().map { it.toComplemento() }
     }
 
     override fun findById(id: String): Complemento? {
         logger.debug { "Obteniendo complemento por id: $id" }
-        return db.getByIdComplemetoEntity(id.toLong())
+        return db.getByIdComplementoEntity(id.toLong())
             .executeAsOneOrNull()
             ?.toComplemento()
     }
