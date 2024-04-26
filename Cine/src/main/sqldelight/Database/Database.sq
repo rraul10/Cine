@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS ComplementoEntity(
     nombre TEXT NOT NULL,
     precio INTEGER NOT NULL
 );
--- Crud ComplemetoEntity
+-- Crud ComplementoEntity
 getAllComplementoEntity:
 SELECT * FROM ComplementoEntity;
 
@@ -94,18 +94,17 @@ INSERT INTO ComplementoEntity(tipo,nombre,precio) VALUES(?,?,?);
 deleteComplementoByID:
 DELETE FROM ComplementoEntity WHERE id=?;
 
+
+
 -- Tabla de Ventas
 CREATE TABLE IF NOT EXISTS VentaEntity (
     id TEXT PRIMARY KEY,
-    cliente_id INTEGER NOT NULL REFERENCES SocioEntity(id),
+    socio_id INTEGER NOT NULL REFERENCES SocioEntity(id),
     total REAL NOT NULL,
-    created_at TEXT NOT NULL,
-    updated_at TEXT NOT NULL,
-    is_deleted INTEGER NOT NULL DEFAULT 0
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL,
+    isDeleted INTEGER NOT NULL DEFAULT 0
 );
-
-
-
 -- Operaciones CRUD para la tabla de Ventas
 removeAllVentas:
 DELETE FROM VentaEntity;
@@ -120,16 +119,16 @@ existsVenta:
 SELECT COUNT(*) > 0 AS es_mayor_cero FROM VentaEntity WHERE id = ?;
 
 selectAllVentasByIsDeleted:
-SELECT * FROM VentaEntity WHERE is_deleted = ?;
+SELECT * FROM VentaEntity WHERE isDeleted = ?;
 
 selectVentaLastInserted:
 SELECT * FROM VentaEntity WHERE id = last_insert_rowid();
 
 insertVenta:
-INSERT INTO VentaEntity (id, cliente_id, total, created_at, updated_at) VALUES (?, ?, ?, ?, ?);
+INSERT INTO VentaEntity (id, socio_id, total, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?);
 
 updateVenta:
-UPDATE VentaEntity SET cliente_id = ?, total = ?, updated_at = ?, is_deleted = ? WHERE id = ?;
+UPDATE VentaEntity SET socio_id = ?, total = ?, updatedAt = ?, isDeleted = ? WHERE id = ?;
 
 deleteVenta:
 DELETE FROM VentaEntity WHERE id = ?;
@@ -143,9 +142,9 @@ CREATE TABLE IF NOT EXISTS LineaVentaEntity (
      complementoId INTEGER NOT NULL REFERENCES ComplementoEntity(id),
      cantidad INTEGER NOT NULL,
      precio REAL NOT NULL,
-     created_at TEXT NOT NULL,
-     updated_at TEXT NOT NULL,
-     is_deleted INTEGER NOT NULL DEFAULT 0
+     createdAt TEXT NOT NULL,
+     updatedAt TEXT NOT NULL,
+     isDeleted INTEGER NOT NULL DEFAULT 0
 );
 
 -- Operaciones CRUD para la tabla de Lineas de Ventas
@@ -162,16 +161,16 @@ selectAllLineasVentaByVentaId:
 SELECT * FROM LineaVentaEntity WHERE venta_id = ?;
 
 selectAllLineasVentasByIsDeleted:
-SELECT * FROM LineaVentaEntity WHERE is_deleted = ?;
+SELECT * FROM LineaVentaEntity WHERE isDeleted = ?;
 
 selectLineaVentaLastInserted:
 SELECT * FROM LineaVentaEntity WHERE id = last_insert_rowid();
 
 insertLineaVenta:
-INSERT INTO LineaVentaEntity (id, venta_id, producto_id, cantidad, precio, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?);
+INSERT INTO LineaVentaEntity (id, venta_id, complementoId, cantidad, precio, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?);
 
 updateLineaVenta:
-UPDATE LineaVentaEntity SET venta_id = ?, producto_id = ?, cantidad = ?, precio = ?, updated_at = ?, is_deleted = ? WHERE id = ?;
+UPDATE LineaVentaEntity SET venta_id = ?, complementoId = ?, cantidad = ?, precio = ?, updatedAt = ?, isDeleted = ? WHERE id = ?;
 
 deleteLineaVenta:
 DELETE FROM LineaVentaEntity WHERE id = ?;
