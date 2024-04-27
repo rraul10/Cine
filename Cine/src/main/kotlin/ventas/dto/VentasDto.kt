@@ -1,7 +1,7 @@
 package ventas.dto
 
 import butacas.dto.ButacaDto
-import kotlinx.serialization.Serializable
+
 
 data class VentasDto(
     val id: String,
