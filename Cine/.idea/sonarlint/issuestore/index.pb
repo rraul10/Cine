@@ -7,3 +7,19 @@ m
 =src/main/kotlin/butacas/repositories/ButacasRepositoryImpl.kt,4\6\4628a4bdb9577675986ebb587055ef8686e905d8
 i
 9src/main/kotlin/socio/repositories/SocioRepositoryImpl.kt,4\b\4b6c7cb3fb932db5e47eee674b50b2d7eeee0307
+P
+ src/main/kotlin/config/Config.kt,0\4\043aa446d40a768add682fb019dcec7856967ae3
+X
+(src/main/kotlin/butacas/models/Butaca.kt,c\e\ce7a1303980fe16cb07ff88b44914d1f85388f9a
+X
+(src/main/sqldelight/Database/Database.sq,7\f\7ff050e2fd36d8c4e60439c853b9a35440d769f6
+b
+2src/main/kotlin/butacas/services/ButacasService.kt,d\e\de37f8437ce8143698ec0e8fda83bc11cc50bea6
+a
+1src/main/kotlin/butacas/storage/ButacasStorage.kt,5\e\5eb688a713c81e2f14398dcfa333cce0e29617cc
+_
+/src/main/kotlin/butacas/mappers/ButacaMapper.kt,d\d\dd4b9f05d81da44f49285024513e507f0a025e52
+f
+6src/main/kotlin/butacas/services/ButacasServiceImpl.kt,6\6\66e71928f7381bd7f7225bcebed80bca07b39c93
+e
+5src/main/kotlin/butacas/storage/ButacasStorageImpl.kt,e\e\ee404f11ff2933801eb11c0b71baf20b3255a07a

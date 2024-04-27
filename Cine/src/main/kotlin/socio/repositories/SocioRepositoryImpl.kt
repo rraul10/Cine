@@ -1,77 +1,87 @@
 package socio.repositories
 
+import database.DataBaseManager
 import org.lighthousegames.logging.logging
 import socio.models.Socio
+import java.sql.ResultSet
 import java.time.LocalDateTime
 
 private val logger = logging()
 
-class SocioRepositoryImpl(
-    private val dbManager: SqlDeLightManager
-) : ClientesRepository {
-    private val db = dbManager.databaseQueries
+class SocioRepositoryImpl : SocioRepository {
 
+    private fun ResultSet.toSocio(): Socio {
+        return Socio(
+            id = getString("id"),
+            nombre = getString("nombre"),
+            is_deleted = getBoolean("is_deleted")
+        )
+    }
     override fun findAll(): List<Socio> {
-        logger.debug { "Buscando todos los socios" }
-        return db.selectAllSocio().executeAsList().map { it.toSocio() }
-    }
-
-    override fun findById(id: Long): Socio? {
-        logger.debug { "Buscando socio por id: $id" }
-        return db.selectSocioById(id).executeAsOneOrNull()?.toSocio()
-    }
-
-    override fun save(socio: Socio): Socio {
-        logger.debug { "Guardando socio: $socio" }
-
-        val timeStamp = LocalDateTime.now().toString()
-
-        db.transaction {
-            db.insertSocio(
-                nombre = socio.nombre,
-                gmail = socio.gmail,
-                created_at = timeStamp,
-                updated_at = timeStamp,
-            )
+        logger.debug { "Obteniendo todos los socios" }
+        val result = mutableListOf<Socio>()
+        DataBaseManager.use { db ->
+            val sql = "SELECT * FROM Socio"
+            val statement = db.connection?.prepareStatement(sql)!!
+            val rs = statement.executeQuery()
+            while (rs.next()) result.add(rs.toSocio())
         }
-
-        return db.selectSocioLastInserted().executeAsOne().toSocio()
-    }
-
-    override fun update(id: Long, socio: Socio): Socio? {
-        logger.debug { "Actualizando socio por id: $id" }
-        var result = this.findById(id) ?: return null
-        val timeStamp = LocalDateTime.now()
-        result = result.copy(
-            nombre = socio.nombre,
-            gmail = socio.gmail,
-            isDeleted = socio.isDeleted,
-            updatedAt = timeStamp
-        )
-
-        db.updateSocio(
-            nombre = result.nombre,
-            gmail = result.gmail,
-            updated_at = timeStamp.toString(),
-            is_deleted = if (result.isDeleted) 1 else 0,
-            id = id,
-        )
         return result
     }
 
-    override fun delete(id: Long): Socio? {
-        logger.debug { "Borrando socio por id: $id" }
-        val result = this.findById(id) ?: return null
-        // Esto es borrado lógico
-        val timeStamp = LocalDateTime.now()
-        db.updateCliente(
-            nombre = result.nombre,
-            gmail = result.gmail,
-            is_deleted = 1,
-            updated_at = timeStamp.toString(),
-            id = result.id,
-        )
-        return result.copy(isDeleted = true, updatedAt = timeStamp)
+    override fun findById(id: String): Socio? {
+        logger.debug { "Obteniendo socio por el el id: $id" }
+        var result : Socio? = null
+        DataBaseManager.use { db->
+            val sql= "SELECT * FROM Socio WHERE id = ?"
+            val statement = db.connection?.prepareStatement(sql)!!
+            val rs= statement.executeQuery()
+            while (rs.next())result= rs.toSocio()
+        }
+    return result
     }
 
+    override fun save(socio: Socio): Socio {
+        logger.debug { "Guardando socio $socio" }
+        val result: Socio = socio
+        DataBaseManager.use { db->
+            val sql = "SELECT * FROM Socio (id,nombre) VALUES (?,?)"
+            val statement = db.connection?.prepareStatement(sql)!!.apply {
+                setString(1,socio.id)
+                setString(2,socio.nombre)
+                setBoolean(3,socio.is_deleted)
+            }
+            val rs = statement.executeUpdate()
+        }
+        return result
+    }
+
+    override fun update(id: String, socio: Socio): Socio? {
+        logger.debug { "Actualizando socio con id: $id" }
+        var result: Socio = this.findById(id) ?: return null
+        DataBaseManager.use { db->
+            val sql = "UPDATE Socio SET nombre = ? WHERE id = ?"
+            val statement = db.connection?.prepareStatement(sql)!!.apply {
+                setString(1,socio.nombre)
+                setString(2,socio.id)
+            }
+            val rs = statement.executeUpdate()
+            if (rs>0) result = result.copy(is_deleted = true)
+        }
+        return result
+    }
+
+    override fun delete(id: String): Socio? {
+        logger.debug { "Borrando socio con id: $id" }
+        var result : Socio = this.findById(id) ?: return null
+        DataBaseManager.use { db->
+            val sql = "DELETE FROM Socio WHERE id = ?"
+            val statement = db.connection?.prepareStatement(sql)!!.apply {
+                setString(1, id)
+            }
+            val rs = statement.executeUpdate()
+            if (rs>0) result = result.copy(is_deleted = true)
+        }
+        return result
+    }
 }
