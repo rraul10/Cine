@@ -4,8 +4,8 @@ import socio.models.Socio
 
 interface SocioRepository {
     fun findAll(): List<Socio>
-    fun findById(id: Long): Socio?
-    fun save(cliente: Socio): Socio
-    fun update(id: Long, socio: Socio): Socio?
-    fun delete(id: Long): Socio?
+    fun findById(id: String): Socio?
+    fun save(socio: Socio): Socio
+    fun update(id: String, socio: Socio): Socio?
+    fun delete(id: String): Socio?
 }
