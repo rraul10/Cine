@@ -10,6 +10,6 @@ import java.util.*
 interface VentasService {
     fun getById(id: UUID): Result<Venta, VentaError>
     fun create(venta: Venta): Result<Venta, VentaError>
-    fun create(socio: Socio, lineas: List<LineaVenta>): Result<Venta, VentaError>
+    fun create(venta: Venta, lineas: List<LineaVenta>): Result<Venta, VentaError>
     fun exportToHtml(venta: Venta, htmlFile: File): Result<Unit, VentaError>
 }
