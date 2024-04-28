@@ -3,7 +3,7 @@ package productos.butaca.storage
 import Database.ButacaEntity
 import productos.butaca.dto.ButacaDto
 import productos.butaca.exceptions.ButacaException
-import productos.butaca.models.Butaca
+import productos.models.Butaca
 import productos.butaca.validator.ButacaValidator
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

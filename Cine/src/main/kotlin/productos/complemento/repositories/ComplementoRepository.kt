@@ -1,6 +1,6 @@
 package productos.complemento.repositories
 
-import productos.complemento.models.Complemento
+import productos.models.Complemento
 
 interface ComplementoRepository {
     fun findAll(): List<Complemento>

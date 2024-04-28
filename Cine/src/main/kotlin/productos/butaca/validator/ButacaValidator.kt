@@ -2,7 +2,7 @@ package productos.butaca.validator
 
 import org.lighthousegames.logging.logging
 import productos.butaca.exceptions.ButacaException
-import productos.butaca.models.Butaca
+import productos.models.Butaca
 
 private val logger= logging()
 

@@ -1,10 +1,7 @@
 package productos.butaca.services
 
 
-import productos.butaca.exceptions.ButacaException
-import productos.butaca.models.Butaca
-import com.github.michaelbull.result.Result
-import java.io.File
+import productos.models.Butaca
 
 interface ButacasService {
     fun getAll(): List<Butaca>

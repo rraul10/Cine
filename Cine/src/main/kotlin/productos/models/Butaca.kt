@@ -1,4 +1,4 @@
-package productos.butaca.models
+package productos.models
 
 const val PROB_VIP = 30
 const val PROB_NORMAL = 70

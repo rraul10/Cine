@@ -1,13 +1,9 @@
 package productos.butaca.services
 
 import productos.butaca.exceptions.ButacaException
-import productos.butaca.models.Butaca
+import productos.models.Butaca
 import productos.butaca.repositories.ButacasRepository
-import productos.butaca.storage.ButacasStorage
-import com.github.michaelbull.result.Result
 import org.lighthousegames.logging.logging
-import java.io.File
-import kotlin.math.log
 
 private val logger = logging()
 

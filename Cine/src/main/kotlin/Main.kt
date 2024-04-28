@@ -1,7 +1,7 @@
-import productos.butaca.models.Actividad
-import productos.butaca.models.Butaca
-import productos.butaca.models.Estado
-import productos.butaca.models.Tipo
+import productos.models.Actividad
+import productos.models.Butaca
+import productos.models.Estado
+import productos.models.Tipo
 import productos.butaca.validator.ButacaValidator
 
 fun main(){

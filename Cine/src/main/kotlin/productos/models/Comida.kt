@@ -1,4 +1,4 @@
-package productos.complemento.models
+package productos.models
 
 class Comida(
     val nombre: CategoriaComida

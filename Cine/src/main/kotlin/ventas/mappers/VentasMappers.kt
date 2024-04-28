@@ -1,7 +1,7 @@
 package ventas.mappers
 
 import Database.VentaEntity
-import productos.complemento.models.Complemento
+import productos.models.Complemento
 import socio.models.Socio
 import ventas.dto.VentasDto
 import ventas.models.LineaVenta
