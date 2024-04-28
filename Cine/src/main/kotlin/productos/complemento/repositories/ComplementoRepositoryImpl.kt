@@ -1,9 +1,9 @@
-package complementos.repositories
+package productos.complemento.repositories
 
-import complementos.mappers.toComplemento
-import complementos.models.Bebida
-import complementos.models.Comida
-import complementos.models.Complemento
+import productos.complemento.mappers.toComplemento
+import productos.complemento.models.Bebida
+import productos.complemento.models.Comida
+import productos.complemento.models.Complemento
 import org.example.database.SqlDelightManager
 import org.lighthousegames.logging.logging
 

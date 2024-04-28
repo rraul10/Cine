@@ -1,4 +1,4 @@
-package complementos.errors
+package productos.complemento.errors
 
 sealed class ComplementoError(val mensaje: String) {
     class IdNoValido(mensage: String): ComplementoError(mensage)

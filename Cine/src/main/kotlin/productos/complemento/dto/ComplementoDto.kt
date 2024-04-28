@@ -1,4 +1,4 @@
-package complementos.dto
+package productos.complemento.dto
 
 class ComplementoDto(
     val tipoComplemento: String,
