@@ -1,6 +1,6 @@
 package ventas.dto
 
-import butacas.dto.ButacaDto
+import productos.butaca.dto.ButacaDto
 
 
 data class VentasDto(

@@ -1,6 +1,6 @@
 package ventas.models
 
-import butacas.models.Butaca
+import productos.models.Butaca
 import java.time.LocalDateTime
 import java.util.*
 
