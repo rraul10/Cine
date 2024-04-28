@@ -4,7 +4,6 @@ import database.DataBaseManager
 import org.lighthousegames.logging.logging
 import socio.models.Socio
 import java.sql.ResultSet
-import java.time.LocalDateTime
 
 private val logger = logging()
 

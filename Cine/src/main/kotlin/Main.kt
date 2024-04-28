@@ -1,13 +1,12 @@
-import butacas.models.Actividad
-import butacas.models.Butaca
-import butacas.models.Estado
-import butacas.models.Tipo
-import butacas.validator.ButacaValidator
-import java.io.ObjectInputFilter.Config
+import productos.models.Actividad
+import productos.models.Butaca
+import productos.models.Estado
+import productos.models.Tipo
+import productos.butaca.validator.ButacaValidator
 
 fun main(){
     println()
-    val butaca = Butaca("A4",Estado.LIBRE, Actividad.ACTIVA, Tipo.NORMAL)
+    val butaca = Butaca("A4", Estado.LIBRE, Actividad.ACTIVA, Tipo.NORMAL)
     val butacaValidator = ButacaValidator()
     println( butacaValidator.validate(butaca))
 
