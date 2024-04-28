@@ -1,9 +1,9 @@
-package butacas.services
+package productos.butaca.services
 
-import butacas.exceptions.ButacaException
-import butacas.models.Butaca
-import butacas.repositories.ButacasRepository
-import butacas.storage.ButacasStorage
+import productos.butaca.exceptions.ButacaException
+import productos.butaca.models.Butaca
+import productos.butaca.repositories.ButacasRepository
+import productos.butaca.storage.ButacasStorage
 import com.github.michaelbull.result.Result
 import org.lighthousegames.logging.logging
 import java.io.File
@@ -13,7 +13,7 @@ private val logger = logging()
 
 class ButacasServiceImpl(
     private val butacasRepository: ButacasRepository
-): ButacasService{
+): ButacasService {
     override fun getAll(): List<Butaca> {
         logger.debug { "Obteniendo las butacas" }
         return butacasRepository.findAll()

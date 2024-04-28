@@ -1,10 +1,10 @@
-package butacas.validator
+package productos.butaca.validator
 
-import butacas.exceptions.ButacaException
-import butacas.models.Butaca
 import org.lighthousegames.logging.logging
+import productos.butaca.exceptions.ButacaException
+import productos.butaca.models.Butaca
 
-private val logger = logging()
+private val logger= logging()
 
 class ButacaValidator {
 

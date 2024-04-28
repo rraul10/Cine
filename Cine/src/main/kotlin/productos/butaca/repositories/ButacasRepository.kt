@@ -1,6 +1,6 @@
-package butacas.repositories
+package productos.butaca.repositories
 
-import butacas.models.Butaca
+import productos.butaca.models.Butaca
 
 interface ButacasRepository {
 

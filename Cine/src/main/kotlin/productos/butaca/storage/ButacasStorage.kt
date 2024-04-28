@@ -1,6 +1,6 @@
-package butacas.storage
+package productos.butaca.storage
 
-import butacas.models.Butaca
+import productos.butaca.models.Butaca
 import java.io.File
 
 interface ButacasStorage {

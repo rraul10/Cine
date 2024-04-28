@@ -1,6 +1,6 @@
-package butacas.repositories
+package productos.butaca.repositories
 
-import butacas.models.Butaca
+import productos.butaca.models.Butaca
 import org.example.database.SqlDelightManager
 import org.lighthousegames.logging.logging
 import toButaca

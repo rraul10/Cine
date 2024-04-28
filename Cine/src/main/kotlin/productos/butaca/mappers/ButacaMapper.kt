@@ -1,10 +1,10 @@
 import Database.ButacaEntity
-import butacas.dto.ButacaDto
-import butacas.exceptions.ButacaException
-import butacas.models.Actividad
-import butacas.models.Butaca
-import butacas.models.Estado
-import butacas.models.Tipo
+import productos.butaca.dto.ButacaDto
+import productos.butaca.exceptions.ButacaException
+import productos.butaca.models.Actividad
+import productos.butaca.models.Butaca
+import productos.butaca.models.Estado
+import productos.butaca.models.Tipo
 
 fun ButacaEntity.toButaca(): Butaca {
     val id = this.id

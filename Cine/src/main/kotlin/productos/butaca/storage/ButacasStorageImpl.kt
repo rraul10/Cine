@@ -1,10 +1,10 @@
-package butacas.storage
+package productos.butaca.storage
 
 import Database.ButacaEntity
-import butacas.dto.ButacaDto
-import butacas.exceptions.ButacaException
-import butacas.models.Butaca
-import butacas.validator.ButacaValidator
+import productos.butaca.dto.ButacaDto
+import productos.butaca.exceptions.ButacaException
+import productos.butaca.models.Butaca
+import productos.butaca.validator.ButacaValidator
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.lighthousegames.logging.logging

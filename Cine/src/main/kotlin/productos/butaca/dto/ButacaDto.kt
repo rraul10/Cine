@@ -1,6 +1,6 @@
-package butacas.dto
+package productos.butaca.dto
 
-import butacas.models.Estado
+import productos.butaca.models.Estado
 
 class ButacaDto(
     val id: String,
