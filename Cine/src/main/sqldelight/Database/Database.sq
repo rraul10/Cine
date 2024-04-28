@@ -103,10 +103,10 @@ CREATE TABLE IF NOT EXISTS VentaEntity (
     isDeleted INTEGER NOT NULL DEFAULT 0
 );
 -- Operaciones CRUD para la tabla de Ventas
-removeAllVentas:
+removeAllVenta:
 DELETE FROM VentaEntity;
 
-selectAllVentas:
+selectAllVenta:
 SELECT * FROM VentaEntity;
 
 selectVentaById:
@@ -115,7 +115,7 @@ SELECT * FROM VentaEntity WHERE id = ?;
 existsVenta:
 SELECT COUNT(*) > 0 AS es_mayor_cero FROM VentaEntity WHERE id = ?;
 
-selectAllVentasByIsDeleted:
+selectAllVentaByIsDeleted:
 SELECT * FROM VentaEntity WHERE isDeleted = ?;
 
 selectVentaLastInserted:
@@ -145,19 +145,19 @@ CREATE TABLE IF NOT EXISTS LineaVentaEntity (
 );
 
 -- Operaciones CRUD para la tabla de Lineas de Ventas
-removeAllLineasVentas:
+removeAllLineaVenta:
 DELETE FROM LineaVentaEntity;
 
-selectAllLineasVentas:
+selectAllLineaVenta:
 SELECT * FROM LineaVentaEntity;
 
 selectLineaVentaById:
 SELECT * FROM LineaVentaEntity WHERE id = ?;
 
-selectAllLineasVentaByVentaId:
+selectAllLineaVentaByVentaId:
 SELECT * FROM LineaVentaEntity WHERE venta_id = ?;
 
-selectAllLineasVentasByIsDeleted:
+selectAllLineaVentaByIsDeleted:
 SELECT * FROM LineaVentaEntity WHERE isDeleted = ?;
 
 selectLineaVentaLastInserted:

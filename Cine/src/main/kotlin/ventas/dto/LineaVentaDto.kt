@@ -3,11 +3,11 @@ package ventas.dto
 import productos.butaca.dto.ButacaDto
 
 
-data class LineaVentasDto(
+data class LineaVentaDto(
     val id: String,
-    val butacas: ButacaDto,
+    val producto: ProductoDto,
     val cantidad: String,
     val precio: String,
-    val createAt: String,
-    val updateAt: String
+    val createdAt: String,
+    val updatedAt: String
 )

@@ -8,7 +8,7 @@ data class Butaca(
     val estado: Estado = Estado.LIBRE,
     val actividad: Actividad = Actividad.ACTIVA,
     val tipo : Tipo = Tipo.NORMAL
-) {
+):Producto() {
     val precio: Double
 
     init {
