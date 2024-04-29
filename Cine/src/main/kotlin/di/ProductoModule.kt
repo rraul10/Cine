@@ -2,6 +2,7 @@ package di
 
 import org.example.productos.complementos.storage.ComplementoStorageImpl
 import org.koin.dsl.module
+import org.lighthousegames.logging.logging
 import productos.butaca.repositories.ButacasRepository
 import productos.butaca.repositories.ButacasRepositoryImpl
 import productos.butaca.services.ButacasService
@@ -15,7 +16,10 @@ import productos.complemento.services.ComplementoService
 import productos.complemento.services.ComplementoServiceImpl
 import productos.complemento.storage.ComplementoStorage
 
+private val logger = logging()
+
 val butacaModule= module {
+    logger.debug { "Modulo de butacas" }
     single <ButacasRepository>{ ButacasRepositoryImpl() }
     single <ButacaValidator>{ ButacaValidator() }
     single <ButacasStorage>{ ButacasStorageImpl(get()) }
@@ -26,6 +30,7 @@ val butacaModule= module {
 }
 
 val complementoModule = module {
+    logger.debug { "Modulo de complementos" }
     single <ComplementoRepository>{ ComplementoRepositoryImpl() }
     single <ComplementoStorage>{ ComplementoStorageImpl() }
 
