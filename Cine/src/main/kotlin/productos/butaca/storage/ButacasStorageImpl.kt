@@ -54,5 +54,5 @@ class ButacasStorageImpl(
             logger.error { "Error al leer el fichero CSV" }
             throw ButacaException.FicheroNoValidado("Error al leer el fichero CSV")
         }
-        }
+    }
 }
